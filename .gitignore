@@ -1,0 +1,15 @@
+node_modules
+dist
+*.log
+.DS_Store
+.env.local
+.firebase
+firebase-debug.log
+database-debug.log
+ui-debug.log
+
+# Segredos / ambiente local
+.env
+.env.*
+!.env.example
+*.tsbuildinfo

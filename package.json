@@ -1,0 +1,24 @@
+{
+  "name": "jogo-impostor",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n firebase,vite -c yellow,magenta \"npm run emulators\" \"npm run dev -w client\"",
+    "emulators": "firebase emulators:start --only auth,database --project demo-impostor",
+    "build": "npm run build -w client",
+    "test": "npm test -w shared && firebase emulators:exec --only auth,database --project demo-impostor \"npm test -w client\"",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w client",
+    "deploy": "npm run build && firebase deploy --only hosting,database,auth"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "firebase-tools": "^15.34.2"
+  }
+}
